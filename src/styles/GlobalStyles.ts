@@ -2,14 +2,17 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
     * {
-        margin: 0;
-        padding: 0;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      outline: 0;
+      font-family: Montserrat, Arial, Helvetica, sans-serif;
     }
 
     body {
-        background: #E5E5E5;
+        background: #fff;
+        height: 100vh;
         color: #000;
-        font-family: Roboto, Arial, Helvetica, sans-serif;
     }
 
     button {
