@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Overlay, Container, Content, Background, Name, Description, Title, Actions } from './styles';
 
-const ProfileModal: React.FC = () => {
+const ProfileModal = () => {
   return (
     <Overlay>
       <Container>

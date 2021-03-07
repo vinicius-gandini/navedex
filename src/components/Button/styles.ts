@@ -1,9 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.button`
+interface ButtonProps {
+  color: string;
+}
+
+export const Container = styled.button<ButtonProps>`
   width: 100%;
   height: 40px;
-  background: #212121;
-  color: #fff;
+
+  ${props => props.color === 'black'
+    ? css`
+        background: #212121;
+        color: #fff;`
+    : css`
+        background: #fff;
+        color: #000;
+        border: 1px solid #000;`
+    }
+
+
   font-weight: 600;
 `;

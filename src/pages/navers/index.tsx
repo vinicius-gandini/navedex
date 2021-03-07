@@ -10,7 +10,7 @@ const navers = () => {
       <TitleContent>
         <h1>Navers</h1>
         <AddButton>
-          <Button>Adicionar Naver</Button>
+          <Button color="black">Adicionar Naver</Button>
         </AddButton>
       </TitleContent>
       <Content>

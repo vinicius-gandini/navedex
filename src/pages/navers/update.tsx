@@ -23,7 +23,7 @@ const navers = () => {
           <Input label="URL da foto do Naver" placeholder="URL da foto do Naver"/>
         </Content>
         <UpdateNaverButton>
-          <Button>Salvar</Button>
+          <Button color="black">Salvar</Button>
         </UpdateNaverButton>
       </UpdateNaverContainer>
     </Container>
