@@ -14,8 +14,8 @@ export const Container = styled.div`
   }
 
   button {
-    height: 100%;
-    width: 85px;
+    margin-right: 32px;
+    width: fit-content;
     border: 0;
     padding: 0;
     background: transparent;
