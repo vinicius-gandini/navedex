@@ -11,6 +11,7 @@ export const Container = styled.div`
     height: 37px;
     width: 145px;
     margin-left: 32px;
+    cursor: pointer;
   }
 
   button {

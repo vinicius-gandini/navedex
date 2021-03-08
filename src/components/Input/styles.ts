@@ -16,8 +16,12 @@ export const Container = styled.div`
     border: 1px solid #424242;
     font-size: 16px;
     line-height: 24px;
-    color: #9E9E9E;
+    color: #000;
     padding: 8px;
     margin-top: 4px;
+
+    ::placeholder {
+      color: #9E9E9E;
+    }
   }
 `;
