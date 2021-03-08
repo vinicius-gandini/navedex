@@ -1,13 +1,14 @@
 import React from 'react';
+import { usePopUp } from '../../context/PopUp';
 import Button from '../Button/Button';
-import Link from 'next/link';
 
 import { Overlay, Container, Title, Description, ActionButtons, CloseButton } from './styles';
 
 interface PopUpProps {
   title: string;
   description: string;
-  hasButtons: boolean;
+  hasButtons?: boolean;
+  handleClickPopUp?: () => Promise<void>;
   cancelButton?: string;
   okButton?: string;
 }
@@ -15,9 +16,13 @@ interface PopUpProps {
 const PopUp = ({
     title,
     description,
-    hasButtons,
+    hasButtons = false,
+    handleClickPopUp = async () => {},
     cancelButton = 'Cancelar',
     okButton = 'Excluir'}: PopUpProps) => {
+
+  const { closeModal } = usePopUp();
+
   return (
     <Overlay>
       <Container>
@@ -26,11 +31,11 @@ const PopUp = ({
 
         {hasButtons ? (
           <ActionButtons>
-            <Button >{cancelButton}</Button>
-            <Button color="black">{okButton}</Button>
+            <Button onClick={closeModal}>{cancelButton}</Button>
+            <Button onClick={handleClickPopUp} color="black">{okButton}</Button>
           </ActionButtons>
         ) : (
-          <CloseButton>
+          <CloseButton onClick={closeModal}>
             <img src="/images/close.svg" alt="Fechar"/>
           </CloseButton>
         )}
