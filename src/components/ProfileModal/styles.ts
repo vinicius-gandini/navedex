@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface ProfileImage {
+  image: string;
+}
+
 export const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -38,9 +42,9 @@ export const Content = styled.div`
   }
 `;
 
-export const Background = styled.div`
+export const Background = styled.div<ProfileImage>`
   flex: 1;
-  background: url("https://s2.glbimg.com/GoIfp7hJ3_7aFEqg_TVfoRRpAig=/e.glbimg.com/og/ed/f/original/2020/08/22/batman.png") no-repeat center;
+  background: url(${props => props.image}) no-repeat center;
   background-size: cover;
 `;
 

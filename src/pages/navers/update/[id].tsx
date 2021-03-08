@@ -86,13 +86,13 @@ const navers = ({naver}: UpdateProps) => {
   const formattedBirthdate = useMemo(() => {
     const birth = new Date(naver.birthdate);
 
-    return new Intl.DateTimeFormat('pt-BR').format(birth);
+    return new Intl.DateTimeFormat('pt-BR', {timeZone: 'UTC'}).format(birth);
   }, []);
 
   const formattedAdmissionDate = useMemo(() => {
     const admission = new Date(naver.admission_date);
 
-    return new Intl.DateTimeFormat('pt-BR').format(admission);
+    return new Intl.DateTimeFormat('pt-BR', {timeZone: 'UTC'}).format(admission);
   }, []);
 
   return (

@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 import { Container, Content, Title, Description, Actions } from './styles';
 import { usePopUp } from '../../context/PopUp';
+import ProfileModal from '../ProfileModal/ProfileModal';
 
 interface Naver {
   id: string;
@@ -16,10 +17,11 @@ interface Naver {
 }
 
 interface CardProps {
-  naver: Naver
+  naver: Naver;
+  openProfile: () => void;
 }
 
-const Card = ({ naver }: CardProps) => {
+const Card = ({ naver, openProfile }: CardProps) => {
   const router = useRouter();
   const { openModal, closeModal, changePopUp } = usePopUp();
 
@@ -30,13 +32,11 @@ const Card = ({ naver }: CardProps) => {
       hasButtons: true,
       handleClickPopUp: async () => {
         await api.delete(`/navers/${id}`);
-        closeModal();
         changePopUp({
           title: 'Naver excluído',
           description: 'Naver excluído com sucesso!',
           handleClosePopUp: () => router.replace('/navers')
         })
-        openModal();
       }
     })
     openModal();
@@ -47,21 +47,21 @@ const Card = ({ naver }: CardProps) => {
   }, [])
 
   return (
-    <Container>
-      <img src={naver.url} alt={naver.name}/>
-      <Content>
-        <Title>{naver.name}</Title>
-        <Description>{naver.job_role}</Description>
-        <Actions>
-          <button onClick={() => handleDelete(naver.id)}>
-            <img src="/images/trash.svg" alt="Excluir Naver"/>
-          </button>
-          <button onClick={() => handleUpdate(naver.id)}>
-            <img src="/images/pen.svg" alt="Editar Naver"/>
-          </button>
-        </Actions>
-      </Content>
-    </Container>
+      <Container>
+        <img onClick={openProfile} src={naver.url} alt={naver.name}/>
+        <Content>
+          <Title>{naver.name}</Title>
+          <Description>{naver.job_role}</Description>
+          <Actions>
+            <button onClick={() => handleDelete(naver.id)}>
+              <img src="/images/trash.svg" alt="Excluir Naver"/>
+            </button>
+            <button onClick={() => handleUpdate(naver.id)}>
+              <img src="/images/pen.svg" alt="Editar Naver"/>
+            </button>
+          </Actions>
+        </Content>
+      </Container>
   );
 }
 

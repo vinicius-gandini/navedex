@@ -9,6 +9,7 @@ export const Container = styled.div`
   > img {
     height: 292px;
     width: 100%;
+    cursor: pointer;
   }
 `;
 
