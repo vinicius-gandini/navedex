@@ -18,9 +18,18 @@ export const AddNaverContainer = styled.div`
 export const TitleContent = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
+  position: relative;
 
   h1 {
     margin-left: 32px;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 0;
   }
 `;
 
@@ -32,7 +41,13 @@ export const Content = styled.div`
 `;
 
 export const AddNaverButton = styled.div`
-  width: 176px;
+  width: 100%;
+  display: flex;
   align-self: flex-end;
+  place-content: flex-end;
   margin-top: 32px;
+
+  button {
+    width: 176px;
+  }
 `;

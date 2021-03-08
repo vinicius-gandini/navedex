@@ -8,7 +8,7 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
-export const Login = styled.div`
+export const LoginContent = styled.div`
   width: 28rem;
   min-height: 25.5rem;
   display: flex;
@@ -21,5 +21,20 @@ export const Login = styled.div`
   img {
     height: 4rem;
     width: 15rem;
+  }
+
+  form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      margin-top: 32px;
+    }
+
+    button {
+      margin-top: 32px;
+    }
   }
 `;

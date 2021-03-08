@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 100vh;
   width: 100%;
-  padding: 40px 32px;
+  padding: 40px 32px 0;
 
   display: flex;
   flex-direction: column;
@@ -21,9 +20,9 @@ export const TitleContent = styled.div`
 
 export const Content = styled.div`
   width: 100%;
-
+  margin-top: 36px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 `;
 

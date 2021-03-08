@@ -1,23 +1,66 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import Button from '../components/Button/Button';
 import Input from '../components/Input/Input';
-import PopUp from '../components/PopUp/PopUp';
-import ProfileModal from '../components/ProfileModal/ProfileModal';
+import * as Yup from 'yup';
+import { useRouter } from 'next/router';
 
-import { Container, Login } from '../styles/pages';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
 
-const pages = () => {
+import { Container, LoginContent } from '../styles/pages';
+import { useAuth } from '../context/Authentication';
+
+interface LoginForm {
+  email: string;
+  password: string;
+}
+
+const Login = () => {
+  const formRef = useRef<FormHandles>(null);
+  const { login } = useAuth();
+  const router = useRouter();
+
+  const handleSubmit = useCallback(async (data: LoginForm) => {
+    try {
+      formRef.current?.setErrors({});
+
+      const schema = Yup.object().shape({
+        email: Yup.string()
+          .required('E-mail obrigatório')
+          .email('Digite um e-mail válido'),
+        password: Yup.string().required('Senha obrigatória'),
+      });
+
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+
+      await login({
+        email: data.email,
+        password: data.password,
+      });
+
+      router.push('/navers');
+
+    } catch (err) {
+        // TODO modal error
+        console.log(err);
+    }
+  }, [])
+
   return (
     <Container>
-      <Login>
+      <LoginContent>
         <img src="./images/logo.svg" alt="Logo"/>
-        <Input label="E-mail" placeholder="E-mail"/>
-        <Input label="Senha" placeholder="Senha"/>
-        <Button color="black">Entrar</Button>
-      </Login>
-      <PopUp hasButtons title="Naver filhadaputado" description="filhadaputou um naver com sucesso"/>
+
+        <Form ref={formRef} onSubmit={handleSubmit}>
+          <Input label="E-mail" name="email" placeholder="E-mail"/>
+          <Input label="Senha" type="password" name="password" placeholder="Senha"/>
+          <Button type="submit" color="black">Entrar</Button>
+        </Form>
+      </LoginContent>
     </Container>
   );
 }
 
-export default pages;
+export default Login;

@@ -1,6 +1,7 @@
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import Header from '../components/Header/Header'
+
+import {AuthProvider} from '../context/Authentication';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -31,18 +32,18 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
-        <Head>
-          <link rel="shotcurt icon" href="favicon.png" type="image/png"/>
+        <Html>
+          <Head>
+            <link rel="shotcurt icon" href="favicon.png" type="image/png"/>
 
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"></link>
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
+            <link rel="preconnect" href="https://fonts.gstatic.com" />
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"></link>
+          </Head>
+          <body>
+              <Main />
+              <NextScript />
+          </body>
+        </Html>
     );
   }
 }

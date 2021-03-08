@@ -32,7 +32,13 @@ export const Content = styled.div`
 `;
 
 export const UpdateNaverButton = styled.div`
-  width: 176px;
+  width: 100%;
+  display: flex;
   align-self: flex-end;
+  place-content: flex-end;
   margin-top: 32px;
+
+  button {
+    width: 176px;
+  }
 `;
