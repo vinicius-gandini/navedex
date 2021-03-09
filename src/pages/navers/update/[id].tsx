@@ -18,6 +18,7 @@ import {
 import api from '../../../services/api';
 import { GetServerSideProps } from 'next';
 import { AuthEnum } from '../../../common/constants/auth';
+import { usePopUp } from '../../../context/PopUp';
 
 interface Naver {
   id: string;
@@ -36,6 +37,7 @@ interface UpdateProps {
 const navers = ({naver}: UpdateProps) => {
   const formRef = useRef<FormHandles>(null);
   const router = useRouter();
+  const { openModal, changePopUp } = usePopUp();
 
   useEffect(() => {
     router.prefetch('/navers');
@@ -74,8 +76,11 @@ const navers = ({naver}: UpdateProps) => {
       router.push('/navers');
 
     } catch (err) {
-        // TODO modal error
-        console.log(err);
+      changePopUp({
+        title: 'Oops, algo deu errado',
+        description: `Cheque os campos e tente novamente`,
+      });
+      openModal();
     }
   }, [])
 

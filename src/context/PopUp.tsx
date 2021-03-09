@@ -35,7 +35,6 @@ export const PopUpProvider = ({ children, ...rest }: PopUpProvider) => {
 
   const closeModal = useCallback(() => {
     setModalOpen(false);
-    console.log(handleClosePopUp.fn);
     handleClosePopUp.fn();
   }, [handleClosePopUp]);
 

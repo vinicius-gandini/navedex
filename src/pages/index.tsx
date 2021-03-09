@@ -9,6 +9,7 @@ import { Form } from '@unform/web';
 
 import { Container, LoginContent } from '../styles/pages';
 import { useAuth } from '../context/Authentication';
+import { usePopUp } from '../context/PopUp';
 
 interface LoginForm {
   email: string;
@@ -19,6 +20,7 @@ const Login = () => {
   const formRef = useRef<FormHandles>(null);
   const { login } = useAuth();
   const router = useRouter();
+  const { openModal, changePopUp } = usePopUp();
 
   const handleSubmit = useCallback(async (data: LoginForm) => {
     try {
@@ -43,8 +45,11 @@ const Login = () => {
       router.push('/navers');
 
     } catch (err) {
-        // TODO modal error
-        console.log(err);
+      changePopUp({
+        title: 'Oops, algo deu errado',
+        description: `Cheque as credenciais`,
+      });
+      openModal();
     }
   }, [])
 

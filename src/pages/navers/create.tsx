@@ -9,6 +9,7 @@ import { Form } from '@unform/web';
 
 import { Container, TitleContent, Content, AddNaverButton, AddNaverContainer } from '../../styles/pages/navers/create';
 import api from '../../services/api';
+import { usePopUp } from '../../context/PopUp';
 
 interface Naver {
   id: string;
@@ -23,6 +24,7 @@ interface Naver {
 const navers = () => {
   const formRef = useRef<FormHandles>(null);
   const router = useRouter();
+  const { openModal, changePopUp } = usePopUp();
 
   const handleSubmit = useCallback(async (data: Naver) => {
     try {
@@ -57,8 +59,11 @@ const navers = () => {
       router.push('/navers');
 
     } catch (err) {
-        // TODO modal error
-        console.log(err);
+        changePopUp({
+          title: 'Oops, algo deu errado',
+          description: `Cheque os campos e tente novamente`,
+        });
+        openModal();
     }
   }, []);
 

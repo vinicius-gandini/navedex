@@ -23,7 +23,7 @@ interface CardProps {
 
 const Card = ({ naver, openProfile }: CardProps) => {
   const router = useRouter();
-  const { openModal, closeModal, changePopUp } = usePopUp();
+  const { openModal, changePopUp } = usePopUp();
 
   const handleDelete = useCallback(async (id) => {
     changePopUp({
