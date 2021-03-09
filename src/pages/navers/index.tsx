@@ -60,17 +60,27 @@ const navers = ({ navers }: NaversProps) => {
 export default navers;
 
 export const getServerSideProps: GetServerSideProps<NaversProps> = async (ctx) => {
-  const cookie = ctx.req.cookies;
+  try {
+    const cookie = ctx.req.cookies;
 
-  const response = await api.get<NaversInfo[]>('/navers', {
-    headers: {
-      'Authorization': `Bearer ${cookie[AuthEnum.TOKEN]}`
+    const response = await api.get<NaversInfo[]>('/navers', {
+      headers: {
+        'Authorization': `Bearer ${cookie[AuthEnum.TOKEN]}`
+      }
+    });
+
+    return {
+      props: {
+        navers: response.data,
+      }
     }
-  });
-
-  return {
-    props: {
-      navers: response.data,
+  } catch(err) {
+    return {
+      props: {
+        navers: null,
+      }
     }
   }
+
+
 }

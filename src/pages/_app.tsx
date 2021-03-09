@@ -16,12 +16,12 @@ export default function MyApp({ Component, pageProps }) {
         <title>Navedex</title>
       </Head>
       <GlobalStyle />
-      <AuthProvider>
-        <PopUpProvider>
-          {router.asPath !== '/' && <Header />}
-          <Component {...pageProps} />
-        </PopUpProvider>
-      </AuthProvider>
+      <PopUpProvider>
+        <AuthProvider>
+            {router.asPath !== '/' && <Header />}
+            <Component {...pageProps} />
+        </AuthProvider>
+      </PopUpProvider>
     </>
   )
 }

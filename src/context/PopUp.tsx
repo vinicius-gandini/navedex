@@ -70,6 +70,7 @@ export const PopUpProvider = ({ children, ...rest }: PopUpProvider) => {
 
 function usePopUp(): PopUpContext {
   const context = useContext(PopUpContext);
+  console.log(context);
 
   if (!context) {
     throw new Error('usePopUp must be used within an PopUpContext');

@@ -46,6 +46,7 @@ export const Background = styled.div<ProfileImage>`
   flex: 1;
   background: url(${props => props.image}) no-repeat center;
   background-size: cover;
+  filter: grayscale(1);
 `;
 
 export const Name = styled.h1`

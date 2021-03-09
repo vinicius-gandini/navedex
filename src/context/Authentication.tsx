@@ -3,6 +3,7 @@ import Login from '../pages';
 import api from '../services/api';
 import Cookie from 'js-cookie';
 import { AuthEnum } from '../common/constants/auth';
+import { useRouter } from 'next/router';
 
 interface AuthState {
   token: string;
@@ -24,6 +25,7 @@ interface AuthContextData {
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
+  const router = useRouter();
   const [data, setData] = useState<AuthState>({} as AuthState);
   const [loading, setLoading] = useState(true);
 
@@ -67,6 +69,7 @@ const AuthProvider: React.FC = ({ children }) => {
     delete api.defaults.headers.authorization;
 
     setData({} as AuthState);
+    router.push('/');
   }, []);
 
   return (

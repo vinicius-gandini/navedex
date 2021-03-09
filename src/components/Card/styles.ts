@@ -10,6 +10,7 @@ export const Container = styled.div`
     height: 292px;
     width: 100%;
     cursor: pointer;
+    filter: grayscale(1);
   }
 `;
 

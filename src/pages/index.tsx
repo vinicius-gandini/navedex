@@ -45,6 +45,7 @@ const Login = () => {
       router.push('/navers');
 
     } catch (err) {
+      console.log(changePopUp)
       changePopUp({
         title: 'Oops, algo deu errado',
         description: `Cheque as credenciais`,
@@ -56,7 +57,7 @@ const Login = () => {
   return (
     <Container>
       <LoginContent>
-        <img src="./images/logo.svg" alt="Logo"/>
+        <img src="/images/logo.svg" alt="Logo"/>
 
         <Form ref={formRef} onSubmit={handleSubmit}>
           <Input label="E-mail" name="email" placeholder="E-mail"/>
