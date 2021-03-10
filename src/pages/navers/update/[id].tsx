@@ -71,9 +71,14 @@ const navers = ({naver}: UpdateProps) => {
         url
       }
 
-      await api.put(`/navers/${naver.id}`, formData)
+      await api.put(`/navers/${naver.id}`, formData);
 
-      router.push('/navers');
+      changePopUp({
+        title: 'Naver atualizado',
+        description: 'Naver atualizado com sucesso!',
+        handleClosePopUp: () => router.replace('/navers')
+      });
+      openModal();
 
     } catch (err) {
       changePopUp({

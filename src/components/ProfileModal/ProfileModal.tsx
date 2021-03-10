@@ -56,7 +56,7 @@ const ProfileModal = ({naver, closeProfile}: ProfileProps) => {
 
   const handleUpdate = useCallback((id) => {
     router.push(`/navers/update/${id}`)
-  }, [])
+  }, []);
 
   const formattedBirthdate = useMemo(() => {
     const birth = new Date(naver.birthdate);
@@ -71,8 +71,8 @@ const ProfileModal = ({naver, closeProfile}: ProfileProps) => {
   }, []);
 
   return (
-    <Overlay>
-      <Container>
+    <Overlay onClick={closeProfile}>
+      <Container onClick={(e) => e.stopPropagation()}>
         <Background image={naver.url}/>
         <Content>
           <button onClick={closeProfile}>

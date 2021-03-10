@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 2rem;
 `;
 
 export const LoginContent = styled.div`
@@ -16,7 +17,7 @@ export const LoginContent = styled.div`
   justify-content: space-between;
   flex-direction: column;
   border: 1px solid #212121;
-  padding: 40px 32px;
+  padding: 2.5rem 2rem;
 
   img {
     height: 4rem;
@@ -30,11 +31,11 @@ export const LoginContent = styled.div`
     flex-direction: column;
 
     > div {
-      margin-top: 32px;
+      margin-top: 2rem;
     }
 
     button {
-      margin-top: 32px;
+      margin-top: 2rem;
     }
   }
 `;

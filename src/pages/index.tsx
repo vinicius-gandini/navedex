@@ -45,7 +45,6 @@ const Login = () => {
       router.push('/navers');
 
     } catch (err) {
-      console.log(changePopUp)
       changePopUp({
         title: 'Oops, algo deu errado',
         description: `Cheque as credenciais`,

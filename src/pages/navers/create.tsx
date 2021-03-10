@@ -54,9 +54,14 @@ const navers = () => {
         url
       }
 
-      await api.post(`/navers`, formData)
+      await api.post(`/navers`, formData);
 
-      router.push('/navers');
+      changePopUp({
+        title: 'Naver criado',
+        description: 'Naver criado com sucesso!',
+        handleClosePopUp: () => router.replace('/navers')
+      });
+      openModal();
 
     } catch (err) {
         changePopUp({

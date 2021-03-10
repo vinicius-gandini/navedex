@@ -13,6 +13,10 @@ export const AddNaverContainer = styled.div`
   width: 592px;
   display: flex;
   flex-direction: column;
+
+  @media(max-width: 600px) {
+    padding: 2rem;
+  }
 `;
 
 export const TitleContent = styled.div`
@@ -20,15 +24,20 @@ export const TitleContent = styled.div`
   align-items: center;
 
   h1 {
-    margin-left: 32px;
+    margin-left: 2rem;
   }
 `;
 
 export const Content = styled.div`
-  margin-top: 54px;
+  margin-top: 3.25rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 2.5rem;
+
+  @media(max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const AddNaverButton = styled.div`
@@ -36,9 +45,15 @@ export const AddNaverButton = styled.div`
   display: flex;
   align-self: flex-end;
   place-content: flex-end;
-  margin-top: 32px;
+  margin-top: 2rem;
 
   button {
     width: 176px;
+  }
+
+  @media(max-width: 600px) {
+    display: flex;
+    place-content: center;
+    margin-bottom: 2rem;
   }
 `;
